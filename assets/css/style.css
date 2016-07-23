@@ -1,0 +1,100 @@
+body{
+	background:	#4d4d4d;
+	color:white;
+	font-family:'Open Sans', sans-serif;
+	font-weight:300;
+	font-size:18px;
+	line-height:150%;
+	text-align:center;
+}
+
+header{
+	padding:20px;
+}
+
+h1{
+	font-weight:800;
+	font-size:30px;
+}
+
+p{
+	font-size:14px;
+	line-height:115%;
+	border: 1px solid grey;
+	padding:10px;
+	width:80%;
+	margin:0 auto;
+}
+
+#random-number{
+	padding-top:50px;
+	font-size:70px;
+	height:70px;
+}
+
+#wins{
+	text-align:right;
+	padding-bottom:15px;
+	color:#66ff33;
+	width:48%;
+	float:left;
+	height:100px;
+}
+
+#losses{
+	text-align:left;
+	padding-bottom:15px;
+	color:#ff8080;
+	width:48%;
+	float:right;
+	height:100px;
+}
+
+#left-crystals{
+	width:50%;
+	float:left;
+}
+
+#right-crystals{
+	width:50%;
+	float:right;
+}
+
+.crystal{
+	width:100px;
+	height:100px;
+	margin:10px;
+}
+
+#crystal1{
+	background: url(../images/red-crystal.jpg);
+	background-size: 100% 100%;
+	float:right;
+}
+
+#crystal2{
+	background: url(../images/blue-crystal.jpg);
+	background-size: 100% 100%;
+	float:right;
+}
+
+#crystal3{
+	background: url(../images/yellow-crystal.jpg);
+	background-size: 100% 100%;
+	float:left;
+}
+
+#crystal4{
+	background: url(../images/green-crystal.jpg);
+	background-size: 100% 100%;
+	float:left;
+}
+
+#score-title{
+	clear:both;
+}
+
+#score{
+	font-size:50px;
+	padding-top:15px;
+}

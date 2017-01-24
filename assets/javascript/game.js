@@ -1,3 +1,28 @@
+// Timer object for game
+var timer = {
+	time:30,
+	reset: function(){
+		timer.time = 30;
+		$('#timer').html('Time remaining: ' + timer.time);
+		timer.start();
+	},
+	start: function(){
+		counter = setInterval(timer.count,1000);
+	},
+	stop: function(){
+		clearInterval(counter);
+	},
+	count: function(){
+		timer.time--;
+		$('#timer').html('Time remaining: ' + timer.time);
+
+		if(timer.time == 0){
+			timer.stop();
+			outOfTime();
+		}
+	}
+};
+
 var randomNumber = Math.floor(Math.random() * (120 - 19 + 1)) + 19;
 var wins = 0;
 var losses = 0;

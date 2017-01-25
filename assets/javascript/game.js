@@ -1,9 +1,18 @@
+var randomNumber = Math.floor(Math.random() * (120 - 19 + 1)) + 19;
+var wins = 0;
+var losses = 0;
+var score = 0;
+var crystalValue;
+var timerStarted = false;
+var counter;
+
 // Timer object for game
 var timer = {
-	time:30,
+	time:20,
 	reset: function(){
-		timer.time = 30;
+		timer.time = 20;
 		$('#timer').html('Time remaining: ' + timer.time);
+		clearInterval(counter);
 		timer.start();
 	},
 	start: function(){
@@ -22,12 +31,6 @@ var timer = {
 		}
 	}
 };
-
-var randomNumber = Math.floor(Math.random() * (120 - 19 + 1)) + 19;
-var wins = 0;
-var losses = 0;
-var score = 0;
-var crystalValue;
 
 // Changes crystal values to 4 new different random numbers
 function changeCrystalValues(){
@@ -50,6 +53,11 @@ $("#score").html(score);
 
 $(".crystal").on("click",function(){
 
+	if(!timerStarted){
+		timer.reset();
+		timerStarted = true;
+	}
+
 	// Update score depending on crystal pressed
 	if(this.value == "0"){
 		score += crystalValue[0];
@@ -70,18 +78,9 @@ $(".crystal").on("click",function(){
 
 	// If user loses...
 	if(score > randomNumber){
-		losses++;
-
-		// Reset variables	
-		randomNumber = Math.floor(Math.random() * (120 - 19 + 1)) + 19;
-		score = 0;
-		changeCrystalValues();
-
-		// Update display
-		$("#random-number").html(randomNumber);
-		$("#wins").html("Wins<br>" + wins);
-		$("#losses").html("Losses<br>" + losses + "<br><br>You lost!");
-		$("#score").html(score);
+		userLoses();
+		timer.stop();
+		timerStarted = false;
 	}
 
 	// If user wins...
@@ -98,5 +97,30 @@ $(".crystal").on("click",function(){
 		$("#wins").html("Wins<br>" + wins + "<br><br>You won!");
 		$("#losses").html("Losses<br>" + losses);
 		$("#score").html(score);
+
+		timer.stop();
+		timerStarted = false;
 	}
 });
+
+// Function is called when the timer hits zero
+function outOfTime(){
+	userLoses();
+	timer.stop();
+	timerStarted = false;
+}
+
+function userLoses(){
+	losses++;
+
+	// Reset variables	
+	randomNumber = Math.floor(Math.random() * (120 - 19 + 1)) + 19;
+	score = 0;
+	changeCrystalValues();
+
+	// Update display
+	$("#random-number").html(randomNumber);
+	$("#wins").html("Wins<br>" + wins);
+	$("#losses").html("Losses<br>" + losses + "<br><br>You lost!");
+	$("#score").html(score);
+}
